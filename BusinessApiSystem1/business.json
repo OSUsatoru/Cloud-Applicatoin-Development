@@ -1,0 +1,53 @@
+[
+    {
+        "b_id": 1,
+        "name": "dummy name 1",
+        "street_address": "dummy address 1",
+        "city": "dummy city 1",
+        "state": "dummy state 1",
+        "zip_code": 11111,
+        "phone": "111-111-1111",
+        "category": "dummy category 1",
+        "subcategory": "dummy subcategory 1",
+        "website": "dummy website 1"
+    },
+    {
+        "b_id": 2,
+        "name": "dummy name 2",
+        "street_address": "dummy address 2",
+        "city": "dummy city 2",
+        "state": "dummy state 2",
+        "zip_code": 22222,
+        "phone": "222-222-2222",
+        "category": "dummy category 2",
+        "subcategory": "dummy subcategory 2",
+        "website": "dummy website 2",
+        "email": "dummy email 2"
+    },
+    {
+        "b_id": 3,
+        "name": "dummy name 3",
+        "street_address": "dummy address 3",
+        "city": "dummy city 3",
+        "state": "dummy state 3",
+        "zip_code": 33333,
+        "phone": "333-333-3333",
+        "category": "dummy category 3",
+        "subcategory": "dummy subcategory 3",
+        "website": "dummy website 3",
+        "email": "dummy email 3"
+    },
+    {
+        "b_id": 4,
+        "name": "dummy name 3",
+        "street_address": "dummy address 3",
+        "city": "dummy city 3",
+        "state": "dummy state 3",
+        "zip_code": 33333,
+        "phone": "333-333-3333",
+        "category": "dummy category 3",
+        "subcategory": "dummy subcategory 3",
+        "website": "dummy website 3",
+        "email": "dummy email 3"
+    }
+  ]

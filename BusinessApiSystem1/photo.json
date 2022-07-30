@@ -1,0 +1,11 @@
+[
+    {
+        "b_id": 1,
+        "image": "dummy.png"
+    },
+    {
+        "b_id": 2,
+        "image": "dummy2.png",
+        "caption": "dummy2"
+    }
+]

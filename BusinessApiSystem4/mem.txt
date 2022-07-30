@@ -1,0 +1,25 @@
+docker-compose up
+
+docker run --rm -it --network assignment-4-osusatoru_default mongo mongo -host assignment-4-osusatoru-db-1 --username root --password hunter2 --authenticationDatabase admin
+
+use businesses
+db.getCollectionNames()
+db.getCollection("images.files").find().pretty()
+
+db.getCollection("thumbs.files").find().pretty()
+
+docker run -d --name rabbitmq-server -p "5672:5672" -p "15672:15672" rabbitmq:3-management
+
+default: guest, guest
+
+// test code
+node producer.js
+node consumer.js
+
+npm rebuild @tensorflow/tfjs-node
+
+npm install @tensorflow-models/mobilenet
+
+source .env
+
+{ useUnifiedTopology: true }

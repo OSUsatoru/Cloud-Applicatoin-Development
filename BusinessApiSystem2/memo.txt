@@ -1,0 +1,38 @@
+docker build -t cs493-hw2-yamamsat .
+docker run -d --name cs493-hw2-yamamsat -p 8000:8000 cs493-hw2-yamamsat
+
+docker network create --driver bridge cs493-hw2-yamamsat-net
+
+docker run -d --name mongo-server --network cs493-hw2-yamamsat-net -p "27017:27017" -e "MONGO_INITDB_ROOT_USERNAME=root" -e "MONGO_INITDB_ROOT_PASSWORD=yamamsat" mongo
+
+docker run --rm -it --network cs493-hw2-yamamsat-net mongo mongo --host mongo-server --username root --password yamamsat --authenticationDatabase admin
+
+use yamamsat
+
+db.createUser({
+    user: "root",
+    pwd: "yamamsat",
+    roles:[{role: "readWrite", db: "yamamsat"}]
+    });
+
+show dbs
+
+export MONGO_HOST=localhost
+export MONGO_USER=root
+export MONGO_PASSWORD=yamamsat
+export MONGO_DB_NAME=yamamsat
+
+export MONGO_HOST="localhost"
+export MONGO_USER="root"
+export MONGO_PASSWORD="yamamsat"
+export MONGO_DB_NAME="yamamsat"
+
+
+npm run dev
+
+
+https://hub.docker.com/_/mongo/
+https://qiita.com/homoluctus/items/038dc08fca6405813e0b#dockerfile
+https://shura.design/2020/08/11/archives/2604
+https://www.my-memorandum.tk/docker-mongo-start-with-index
+https://zenn.dev/suiudou/articles/3b32a846655aef

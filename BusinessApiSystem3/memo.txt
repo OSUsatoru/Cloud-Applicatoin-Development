@@ -1,0 +1,48 @@
+export MYSQL_DB_NAME=businesses
+export MYSQL_USER=businesses
+export MYSQL_PASSWORD=hunter2
+
+export MYSQL_PORT=3306
+
+docker-compose up
+
+docker run -d --name businesses --network cs493-hw2-yamamsat-net -p "3306:3306" -e "MYSQL_ROOT_PASSWORD=hunter2" -e "MYSQL_USER=businesses" -e "MYSQL_PASSWORD=hunter2" -e "MYSQL_DATABASE=businesses" mysql
+
+cap_add:
+      - SYS_NICE
+
+------------------
+
+docker-compose up -d
+
+docker run --rm -it --network assignment-3-osusatoru_default mysql mysql -h assignment-3-osusatoru-db-1 -u businesses -p
+
+
+show tables from データベース名;
+
+SHOW COLUMNS FROM テーブル名 FROM データベース名;
+USE データベース名;
+select * from テーブル名;
+
+show tables from businesses;
+
+SHOW COLUMNS FROM businesses FROM businesses;
+use businesses;
+select * from businesses;
+
+SHOW COLUMNS FROM users FROM businesses;
+use users;
+select * from users;
+
+use businesses;
+select * from users;
+
+
+if(req.user.sub != req.params.userId){
+    res.status(403).send({
+         err: "Unauthorized to access the specified resource"
+    })
+    //next()
+  }else{
+
+  }

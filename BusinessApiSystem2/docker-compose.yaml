@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  mongo:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongodata:/data/db
+      - ./createUser/:/docker-entrypoint-initdb.d
+    environment:
+      MONGO_INITDB_DATABASE: createUser.js
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: yamamsat
+  api:
+    image: cs493-hw2-yamamsat
+    ports:
+      - 8000:8000
+    environment:
+      MONGO_HOST: "localhost"
+      MONGO_USER: "root"
+      MONGO_PASSWORD: "yamamsat"
+      MONGO_DB_NAME: "yamamsat"
+      MONDO_PORT: 27017
+
+volumes:
+  mongodata:
+    name: mongo-volume

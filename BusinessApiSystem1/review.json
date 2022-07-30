@@ -1,0 +1,20 @@
+[
+    {
+        "b_id": 1,
+        "rating": "1",
+        "dollar_sign": "$$",
+        "written_review": "not bad"
+    },
+    {
+        "b_id": 2,
+        "rating": "1",
+        "dollar_sign": "$$$",
+        "written_review": "not bad"
+    },
+    {
+        "b_id": 3,
+        "rating": "1",
+        "dollar_sign": "$$$$",
+        "written_review": "good"
+    }
+]
