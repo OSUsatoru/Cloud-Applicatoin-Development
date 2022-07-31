@@ -1,22 +1,10 @@
-# Assignment 4
+# Instruction
 
-**Assignment due at 11:59pm on Tuesday 5/31/2022**<br/>
-**Demo due by 5:00pm on Friday 6/10/2022**
-
-The goal of this assignment is to incorporate file storage into our API and to start using RabbitMQ to perform some basic offline data enrichment.  There are a few parts to this assignment, described below.
-
-You are provided some starter code in this repository that uses MongoDB as a backing to implement a reduced subset of the businesses API we've been working with all term.  The starter code contains the following components:
-  * An API server is implemented in `server.js`.
-  * Individual API routes are modularized within the `api/` directory.
-  * Sequelize models are implemented in the `models/` directory.
-  * A script in `initDb.js` that populates the database with initial data from the `data/` directory.  You can run this script by running `npm run initdb`.
-  * A Docker Compose specification in `compose.yml`.  This specification will launch the entire application from scratch, including populating the database using `initDb.js`.  Note that if you use this specification to launch the app, the `db-init` service and the `api` service will fail with an error (`ECONNREFUSED`) and be restarted continually until the database service is running and the database server itself is ready to accept connections.  This may take several seconds.  Note that the Docker Compose specification relies on some environment variables being set in the included `.env` file.
-
-Feel free to use this code as your starting point for this assignment.  You may also use your own solution to assignment 2 and/or assignment 3 as your starting point if you like.
+The goal is to incorporate file storage into our API and to start using RabbitMQ to perform some basic offline data enrichment.  There are a few parts to this assignment, described below.
 
 ## 1. Support photo file uploads
 
-Your first task for the assignment is to modify the `POST /photos` endpoint to support actual photo uploads.  Specifically, you should update this endpoint to expect a multipart form-data body that contains a `file` field in addition to the fields currently supported by the endpoint (`businessId` and `caption`).  In requests to this endpoint, the `file` field should specifically contain raw binary data for an image file.  The endpoint should accept images in either the JPEG (`image/jpeg`) or PNG (`image/png`) format.  Files in any other format should result in the API server returning an error response.
+First task is to modify the `POST /photos` endpoint to support actual photo uploads.  Specifically, you should update this endpoint to expect a multipart form-data body that contains a `file` field in addition to the fields currently supported by the endpoint (`businessId` and `caption`).  In requests to this endpoint, the `file` field should specifically contain raw binary data for an image file.  The endpoint should accept images in either the JPEG (`image/jpeg`) or PNG (`image/png`) format.  Files in any other format should result in the API server returning an error response.
 
 ## 2. Store uploaded photo data in GridFS
 
@@ -38,7 +26,7 @@ Make sure to include this URL in responses from the `GET /photos/{id}` endpoint,
 
 ## 3. Add an offline thumbnail generation process
 
-Your final task in the assignment is to add an offline data enrichment process that generates a 100x100 thumbnail version of every photo uploaded to the API.  This offline data enrichment process should be facilitated using a RabbitMQ queue.  This task can be broken into a few separate steps:
+Final task is to add an offline data enrichment process that generates a 100x100 thumbnail version of every photo uploaded to the API.  This offline data enrichment process should be facilitated using a RabbitMQ queue.  This task can be broken into a few separate steps:
 
   * **Start a RabbitMQ daemon running in a Docker container.**  You can do this with the [official RabbitMQ Docker image](https://hub.docker.com/_/rabbitmq/).
 
@@ -75,21 +63,3 @@ Your final task in the assignment is to add an offline data enrichment process t
     ```
 
 When your consumer is working correctly, you should be able to launch one or more instances of the consumer running alongside your API server, the RabbitMQ daemon, and the MongoDB server, and you should be able to see the consumers processing photos as they're uploaded.  Note that only the RabbitMQ daemon and the MongoDB server need to be run within Docker containers.  The API server and RabbitMQ consumer(s) can run either in Docker or directly on your host machine.
-
-## Submission
-
-We'll be using GitHub Classroom for this assignment, and you will submit your assignment via GitHub.  Just make sure your completed files are committed and pushed by the assignment's deadline to the master branch of the GitHub repo that was created for you by GitHub Classroom.  A good way to check whether your files are safely submitted is to look at the master branch your assignment repo on the github.com website (i.e. https://github.com/osu-cs493-sp22/assignment-4-YourGitHubUsername/). If your changes show up there, you can consider your files submitted.
-
-## Grading criteria
-
-This assignment is worth 100 total points, broken down as follows:
-
-  * 20 points: API supports image uploads
-
-  * 20 points: Uploaded images are stored in GridFS
-
-  * 20 points: API uses an offline process powered by RabbitMQ to generate thumbnail images
-
-  * 20 points: All thumbnail images are correctly stored in GridFS and "linked" to their corresponding original photo in the datavase
-
-  * 20 points: All photos and thumbnails are available for download using the URL formats described above

@@ -1,15 +1,6 @@
-# Assignment 2
+# Instruction
 
-**Assignment due at 11:59pm on Monday 5/2/2022**<br/>
-**Demo due by 11:59pm on Monday 5/16/2022**
-
-The goal of this assignment is to start using a real database to store application data.  The assignment requirements are listed below.
-
-You are provided some starter code in this repository that implements a solution to assignment 1.  The starter code's API server is implemented in `server.js`, and individual routes are modularized within the `api/` directory.  Tests and a testing environment for the API are included in the `tests/` directory.  You can import these tests into either Postman or Insomnia and build on them if you like.  Note that, depending on where you're running your API server, you may need to update the `baseUrl` variable in the included testing environment to reflect the URL for your own server.
-
-The starter code also includes an `openapi.yaml` file in the `public/` directory.  You can import this file into the OpenAPI editor at https://editor.swagger.io/ to generate documentation for the server to see how its endpoints are set up.
-
-Feel free to use this code as your starting point for this assignment.  You may also use your own solution to assignment 1 as your starting point if you like.
+The goal is to start using a real database to store application data.
 
 ## Use a database to power your API
 
@@ -18,7 +9,7 @@ Your overarching goal for this assignment is to modify the API server to use a d
   * Reviews
   * Photos
 
-You may choose either MySQL or MongoDB for this purpose (or another DB implementation you're interested in, with permission).  Whichever database you choose, it should completely replace the starter code's existing JSON/in-memory storage for these resources.  In other words, you should update all API endpoints in the original starter code to use your database.
+You may choose either MySQL or MongoDB for this purpose (or another DB implementation you're interested in, with permission).
 
 You should use the [official MySQL Docker image](https://hub.docker.com/_/mysql/) or the [official MongoDB Docker image](https://hub.docker.com/_/mongo) from Docker Hub to power your database.  Whichever database you choose, your implementation should satisfy the criteria described below.
 
@@ -68,22 +59,3 @@ You should write a simple Docker Compose specification that launches your entire
 When defining your Compose specification, make sure to specify the correct environment variables to initialize the database container and to allow the API server to connect to the database container, and make sure you publish the appropriate port(s) so you can communicate with your API.  Note that there is already a Dockerfile in this repository representing an image to run your API server, and you can reference this Dockerfile within your Compose specification.
 
 **It's a good idea to think about the Docker Compose specification as a "production" version of your app.**  In other words, get your server working the way you want them to *without* Docker before you worry about getting things working with Compose.  It'll lengthen your development cycle too much if you continually need to restart the Compose application every time you make changes to your server code.
-
-## Extra credit: Use Mongoose
-
-[Mongoose](https://mongoosejs.com/) is an object modeling tool for MongoDB that's very similar in spirit to Sequelize for MySQL.  If you choose to use MongoDB as your database, you can earn up to 10 points of extra credit by using Mongoose instead of the native MongoDB driver for Node.js.  To earn this extra credit, you must use Mongoose for all of your database interactions.
-
-## Submission
-
-We'll be using GitHub Classroom for this assignment, and you will submit your assignment via GitHub.  Just make sure your completed files are committed and pushed by the assignment's deadline to the master branch of the GitHub repo that was created for you by GitHub Classroom.  A good way to check whether your files are safely submitted is to look at the master branch your assignment repo on the github.com website (i.e. https://github.com/osu-cs493-sp22/assignment-2-YourGitHubUsername/). If your changes show up there, you can consider your files submitted.
-
-## Grading criteria
-
-This assignment is worth 100 total points, broken down as follows:
-
-  * 20 points: chosen database runs in a Docker container that is correctly initialized (e.g. by using appropriate environment variables the first time the container is launched)
-  * 60 points: all existing API endpoints in the starter code are modified to use your database
-  * 10 points: database connection parameters are correctly provided to API server via environment variables
-  * 10 points: a Docker Compose specification can be used to launch the entire application from scratch
-
-As described above, you can also earn up to 10 points of extra credit for using Mongoose in conjunction with MongoDB.
